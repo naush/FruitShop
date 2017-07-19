@@ -1,13 +1,16 @@
 
 
 if __name__ == "__main__":
-  fruitNames = {
-          "Apple": "Apple",
-          "Pomme": "Apple",
-          "Manzana": "Apple"
+  fruitPrice = {
+          "Apple": 100,
+          "Manzana": 100,
+          "Pomme": 100,
+          "Cherry": 75,
+          "Banana": 150
   }
-  fruitPrice = {"Apple": 100, "Cherry": 75, "Banana": 150}
   discount = {
+      "Apple": [3, lambda x: x, 0],
+      "Manzana": [2, lambda x: x, 0],
       "Cherry": [2, lambda x: x + 75 - 20, 0],
       "Banana": [3, lambda x: x, 0]
   }
@@ -18,9 +21,7 @@ if __name__ == "__main__":
 
     fruits = res.replace(" ", "").split(",")
 
-    for fruitName in fruits:
-        fruit = fruitNames.get(fruitName, fruitName)
-
+    for fruit in fruits:
         if fruit in discount:
             dc = discount[fruit]
             dc[2] += 1
